@@ -13,7 +13,7 @@ const array = [
     },
 ];
 
-async function render() {
+const render = async() => {
     for(let i = 0; i < array.length; i++) {
         await new Promise( ( resolve, reject ) => {
             setTimeout( ()=> {
@@ -24,7 +24,7 @@ async function render() {
     }
 }
 
-function renderFor() {
+const renderFor = () => {
     for(let i = 0; i < array.length; i++) {
         array[i](`${i} - функция!`);
     } 

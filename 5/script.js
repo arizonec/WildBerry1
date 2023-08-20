@@ -5,7 +5,7 @@ class Node {
     }
 }
 
-function toLinkedList(jsonStr) {
+const toLinkedList = (jsonStr) => {
     const data = JSON.parse(jsonStr);
 
     const first = new Node(data[0]);

@@ -1,4 +1,4 @@
-function cleaned(string) {
+const cleaned = (string) => {
     let str;
 
     switch(typeof string) {
@@ -24,7 +24,7 @@ function cleaned(string) {
 }
 
 
-function palindrome(str) {
+const palindrome = (str) => {
     let string = cleaned(str);
 
     return string.split('').reverse().join('') === string;
@@ -32,7 +32,7 @@ function palindrome(str) {
 }
 
 
-function palindromeFor(str) {
+const palindromeFor = (str) => {
     let string = cleaned(str);
 
     for(let i = 0; i < string.length / 2; i++) {

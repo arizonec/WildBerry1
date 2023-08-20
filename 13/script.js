@@ -60,17 +60,17 @@ class Triangle extends Shape {
     }
   }
 
-  const rectangle = new Rectangle(4, 5);
+  const rectangle = new Rectangle(2, 2);
   console.log('rectangle');
   console.log(rectangle.calculateArea());
   console.log(rectangle.calculatePerimeter());
   
-  const circle = new Circle(3);
+  const circle = new Circle(5);
   console.log('circle');
   console.log(circle.calculateArea());
   console.log(circle.calculatePerimeter());
   
-  const triangle = new Triangle(3, 4, 5);
+  const triangle = new Triangle(5, 6, 7);
   console.log('triangle');
   console.log(triangle.calculateArea());
   console.log(triangle.calculatePerimeter());

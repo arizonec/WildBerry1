@@ -5,22 +5,21 @@ localStorage.setItem('test3', '12356');
 localStorage.setItem('test4', '123567');
 localStorage.setItem('test5', '123567');
 
-function calculateLocalStorageSize() {
+const calculateLocalStorageSize = () => {
     let dataSize = 0;
   
     try {
-      // Проверяем, поддерживает ли браузер localStorage
       if ('localStorage' in window && window['localStorage'] !== null) {
         dataSize = JSON.stringify(localStorage).length;
         newData = 5242880 - dataSize;
       }
     } catch (error) {
-      console.error('Ошибка при подсчете размера localStorage:', error);
+      console.error('Ошибка localStorage:', error);
     }
   
     return newData;
   }
   
-  // Вызываем функцию для подсчета размера localStorage
-  const localStorageSize = calculateLocalStorageSize();
-  console.log('Максимальный объем данных, который можно записать в localStorage:', localStorageSize, 'байт');
+
+const localStorageSize = calculateLocalStorageSize();
+console.log('Свободно:', localStorageSize, 'байт');

@@ -1,7 +1,7 @@
 const url = 'https://render.fineartamerica.com/images/rendered/default/poster/10/8/break/images/artworkimages/medium/2/elon-musk-smoking-elon-musk.jpg';
 const pic = document.querySelector('.image');
 
-function promiseURL(url) {
+const promiseURL = (url) => {
     return new Promise((resolve, reject) => {
         const image = new Image();
 

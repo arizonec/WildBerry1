@@ -42,7 +42,7 @@ const objects = [
 
 ]
 
-function sort(array) {
+const sort = (array) => {
     let sorted = array.sort((a, b) => {
         if (a.age > b.age) {
             return 1;

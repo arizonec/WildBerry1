@@ -11,7 +11,7 @@ const arrayOfFunctions = [
 ];
 
 
-function outside(array) {
+const outside = (array) => {
     const newArray = [];
     let i = 0;
 

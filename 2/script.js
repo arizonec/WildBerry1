@@ -1,5 +1,5 @@
 
-function strangeNumber(number) {
+const strangeNumber = (number) => {
     let numArray = [];
 
     for(let i = 0; i < number; i++) {
@@ -11,7 +11,7 @@ function strangeNumber(number) {
     return numArray;
 }
 
-function findCombination(arr, targetSum) {
+const findCombination = (arr, targetSum) => {
     if (targetSum < 70) return('Наименьшее странное число = 70! Введите number >= 70 ')
 
     const combinations = [];
@@ -45,7 +45,7 @@ function findCombination(arr, targetSum) {
     return true;
   }
 
-function strNum(number) {
+const strNum = (number) => {
     return findCombination(strangeNumber(number), number)
 }
 

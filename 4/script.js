@@ -1,11 +1,9 @@
-function dependOnNum(n, titles) {
+export const dependOnNum = (n, titles) => {
     return titles[(n % 10 === 1 && n % 100 !== 11) ? 0 : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2]
   }
 
-console.log(dependOnNum(126, data('акула')));
 
-
-function data(word) {
+const data = (word) => {
     let wordsArray = [];
     let changedWord;
     let thirdWord;

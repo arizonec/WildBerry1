@@ -1,10 +1,10 @@
 
 
 
-function outside() {
+const outside = () => {
     let sum = 0;
     console.log('Внешнаяя функция отработала');
-    return function inside() {
+    return function() {
         console.log(`Внутренняя функция отработала с результатом - ${sum}`);
         return sum++;
     }

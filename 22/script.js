@@ -1,6 +1,10 @@
-document.write('Первый вызов document.write()');
-document.write('<br>');
-document.write('Второй вызов document.write(): ');
-document.write('<script>document.write("Вложенный вызов document.write()");</script>');
-document.write('<br>');
-document.write('Третий вызов document.write()');
+const generateWrite = () => {
+    document.write(document.querySelector("#test").innerHTML);
+  };
+  
+  const showCount = () => {
+    const count = document.querySelectorAll(".test").length;
+    const root = document.querySelector("#count-num");
+  
+    root.textContent = count;
+  };

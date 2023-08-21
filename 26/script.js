@@ -1,4 +1,4 @@
-function treeDOM(node, elemAction) {
+const treeDOM = (node, elemAction) => {
   elemAction(node); 
 
   let children = node.children;
@@ -11,7 +11,7 @@ function treeDOM(node, elemAction) {
 
 const element = document.querySelector('.bucket');
 
-function printNodeInfo(node) {
+const printNodeInfo = (node) => {
   console.log(node.className); 
 }
 

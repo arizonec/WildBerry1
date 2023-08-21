@@ -20,7 +20,7 @@ const parse = (data) => {
     let hasActive;
     let state = 0;
 
-    function renderPagination() {
+    const renderPagination = () => {
         for(let i = 1; i <= data.length / 50; i++) {
             let li = document.createElement('li');
             li.innerHTML = i;
@@ -36,7 +36,7 @@ const parse = (data) => {
         })
     }
 
-    function createLi(item) {
+    const createLi = (item) => {
         if(hasActive) {
             hasActive.classList.remove('active');
         }
@@ -66,11 +66,11 @@ const parse = (data) => {
         }
     }
 
-    function loadFirst() {
+    const loadFirst = () => {
         createLi(liItems[0]);
     }
 
-    function createCell(text, tr) {
+    const createCell = (text, tr) => {
         let td = document.createElement('td');
         td.innerHTML = text;
         tr.appendChild(td);
@@ -99,7 +99,7 @@ const parse = (data) => {
     pagination.insertAdjacentElement('afterbegin', prev);
     pagination.insertAdjacentElement('beforeend', next);
  
-    function sort(array, val) {
+    const sort = (array, val) => {
     let sorted = array.sort((a,b) => {
         if(a[val] > b[val]) {
             return 1;
@@ -122,7 +122,7 @@ const parse = (data) => {
         loadFirst();
     });
 
-    function filterList() {
+    const filterList = () => {
         document.getElementById("myPopup").classList.toggle("show");
     }
     buttonFilter.addEventListener('click', filterList);

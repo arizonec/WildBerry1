@@ -1,10 +1,10 @@
-const generateWrite = () => {
-    document.write(document.querySelector("#test").innerHTML);
+const documentWrite = () => {
+    document.write(document.querySelector(".count-area").innerHTML);
   };
   
-  const showCount = () => {
-    const count = document.querySelectorAll(".test").length;
-    const root = document.querySelector("#count-num");
+const counter = () => {
+    const number = document.querySelectorAll(".number").length;
+    const countNum = document.querySelector(".count-num");
   
-    root.textContent = count;
-  };
+    countNum.textContent = number;
+};

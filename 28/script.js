@@ -1,19 +1,19 @@
-// function createTemplate(html) {
-//     const template = document.createElement('template');
+const cities = document.querySelector('ul');
 
-//     template.innerHTML = html.trim();
+const li = document.querySelector('#li');
+const span = li.content.querySelector('span');
 
-//     return template.content.firstElementChild;
-// }
+span.textContent = 'Sochi';
 
-// const bitcoin = createTemplate(`
-//     <div>BITCOIN</div>
-// `);
+let copyLi = li.content.cloneNode(true);
+cities.append(copyLi);
 
+span.textContent = 'Surgut';
 
-// const crypto = document.querySelector('.crypto');
-// crypto.appendChild(bitcoin);
+copyLi = li.content.cloneNode(true);
+cities.append(copyLi);
 
-const fetcher = async() => {
-    const data = await fetch();
-}
+span.textContent = 'Paris';
+
+copyLi = li.content.cloneNode(true);
+cities.append(copyLi);

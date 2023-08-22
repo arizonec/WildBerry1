@@ -58,3 +58,45 @@ document.addEventListener('click', (e) => {
         list.style.visibility = 'hidden'; 
     }
 })
+
+
+
+
+
+
+const debounce = (func, ms) => {
+    let timeout;
+
+    return function(...args) {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func(...args), ms);
+    }
+}
+// searchInput.addEventListener('keyup', debounce(async() => {createLi(await getQuery())}, 300));
+
+
+const throttle = (func, ms) => {
+    let isThrottled = false;
+    let savedArgs; 
+
+    return function wrapper(...args) {
+        if(isThrottled) {
+            savedArgs = arguments;
+            return;
+        }
+
+        func(...args);
+        isThrottled = true;
+
+        setTimeout(() => {
+            isThrottled = false;
+            if(savedArgs) {
+                wrapper(savedArgs);
+                savedArgs = null;
+            }
+        }, ms);
+
+    }
+}
+
+searchInput.addEventListener('keyup', throttle(async() => {createLi(await getQuery())}, 300));

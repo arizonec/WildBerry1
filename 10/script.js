@@ -1,4 +1,4 @@
-function convertToJSON(str) {
+const convertToJSON = (str) => {
     let currentIndex = 0;
     
     try {
@@ -130,4 +130,9 @@ function convertToJSON(str) {
     function isDigit(char) {
       return /[0-9]/.test(char);
     }
-  }
+}
+
+console.log(convertToJSON('{"name":"alex","sizes":[1,2,3,4]}'));
+console.log(convertToJSON('{"name":"alex","sizes":[1,2,3,4}'));
+console.log(convertToJSON('{"name":"alex","sizes":[1,2,3,4]'));
+console.log(convertToJSON('{"name":"alex","sizes":[1,2,3,4],"type":true}'));

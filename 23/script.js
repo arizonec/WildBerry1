@@ -1,36 +1,109 @@
-function checkPasswords(password) {
-    var s_letters = "qwertyuiopasdfghjklzxcvbnm"; // Буквы в нижнем регистре
-    var b_letters = "QWERTYUIOPLKJHGFDSAZXCVBNM"; // Буквы в верхнем регистре
-    var digits = "0123456789"; // Цифры
-    var specials = "!@#$%^&*()_-+=\|/.,:;[]{}"; // Спецсимволы
+const input = document.querySelector('.password__input');
+const button = document.querySelector('.password__button');
+const  title = document.querySelector('.advice__title');
+const  lengthButton = document.querySelector('.advice__length');
+const  symbols = document.querySelector('.advice__symbold');
+const  numbers = document.querySelector('.advice__numbers');
+const  letters = document.querySelector('.advice__letters');
+const diff = document.querySelector('.password__diff')
+
+const checkPasswords = (password) => {
     var rating = 0;
 
-    for (var i = 0; i < password.length; i++) {
-      if (s_letters.indexOf(password[i]) != -1) rating++;
-      else if (b_letters.indexOf(password[i]) != -1) rating++;
-      else if (digits.indexOf(password[i]) != -1) rating++;
-      else if (specials.indexOf(password[i]) != -1) rating++;
+    var length = password.length >= 8;
+    var s_letters = /[a-z]/.test(password);
+    var b_letters = /[A-Z]/.test(password);
+    var digits = /\d/.test(password);
+    var specials = /[!@#$%^&*()_\-+=\\|/.,:;[\]{}]/.test(password);
+    if(password.length === 0) {
+            letters.style.display = 'block';
+            numbers.style.display = 'block';
+            symbols.style.display = 'block';
+            lengthButton.style.display = 'block'
     }
-    let text = "";
+    if(length && s_letters && b_letters && digits && specials) {
+        title.style.display = 'none';
+    } else {
+        title.style.display = 'block';
+    }
 
-    if (password.length < 6 && rating < 3) text = "Простой";
-    else if (password.length < 6 && rating >= 3) text = "Средний";
-    else if (password.length >= 8 && rating < 3) text = "Средний";
-    else if (password.length >= 8 && rating >= 3) text = "Сложный";
-    else if (password.length >= 6 && rating == 1) text = "Простой";
-    else if (password.length >= 6 && rating > 1 && rating < 4) text = "Средний";
-    else if (password.length >= 6 && rating == 4) text = "Сложный";
-    alert(text); // Выводим итоговую сложность пароля
-    return false; // Форму не отправляем
+    for (var i = 0; i < password.length; i++) {
+      if (s_letters) {
+        rating++;
+      } else {
+        rating--;
+      }
+
+      if (b_letters) {
+        rating++;
+        letters.style.display = 'none';
+      } else {
+        rating--;
+        letters.style.display = 'block';
+      }
+
+      if (digits) {
+        rating++;
+        numbers.style.display = 'none';
+      } else {
+        rating--;
+        numbers.style.display = 'block';
+      }
+      
+      if (specials) {
+        rating++;
+        symbols.style.display = 'none';
+      } else {
+        rating--;
+        symbols.style.display = 'block';
+      }
+      
+      if (length) {
+        rating++;
+        lengthButton.style.display = 'none'
+      } else {
+        rating--;
+        lengthButton.style.display = 'block'
+      }
+    }
+
+    if (password.length < 8 && rating < 3) {
+        diff.style.color = 'red';
+        diff.innerHTML = "Простой";
+    }
+    else if (password.length < 8 && rating >= 3) {
+        diff.style.color = 'orange';
+        diff.innerHTML = "Средний";
+    }
+    else if (password.length >= 8 && rating < 3) {
+        diff.style.color = 'orange';
+        diff.innerHTML = "Средний";
+    }
+    else if (password.length >= 8 && rating >= 3) {
+        diff.style.color = 'green';
+        diff.innerHTML = "Сложный";
+    }
+    else if (password.length >= 8 && rating == 1) {
+        diff.style.color = 'red';
+        diff.innerHTML = "Простой";
+    }
+    else if (password.length >= 8 && rating > 1 && rating < 4) {
+        diff.style.color = 'orange';
+        diff.innerHTML = "Средний";
+    }
+    else if (password.length >= 8 && rating == 4) {
+        diff.style.color = 'green';
+        diff.innerHTML = "Сложный";
+    }
 }
 
-checkPasswords('car-123-jeep')
+input.addEventListener('input', (e) => {
+    checkPasswords(e.target.value);
+})
 
-const passwordDestroyerMachine = (password) => {
-    const low_letters = "qwertyuiopasdfghjklzxcvbnm"; 
-    const hith_letters = "QWERTYUIOPLKJHGFDSAZXCVBNM"; 
-    const digits = "0123456789";
-    const symbols = "!@#$%^&*()_-+=\|/.,:;[]{}"; 
-
-
-} 
+button.addEventListener('click', () => {
+    input.classList.toggle('visible');
+    if(input.classList.contains('visible')) {
+        input.type = 'text';
+    } else input.type = 'password';
+})

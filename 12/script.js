@@ -4,8 +4,8 @@ const bookFirst = {
     year: '1952',
 };
 
-const getTitle = (obj) => {
-    const name = obj.title;
+const getTitle = () => {
+    const name = this.title;
     console.log(`That book was named, ${name}!`);
 }
 
@@ -23,7 +23,7 @@ const bookSecond = {
     year: '1952',
 
    getName: function() {
-        const name = obj.title;
+        const name = this.title;
         console.log(`That book was named, ${name}!`)
    },
 

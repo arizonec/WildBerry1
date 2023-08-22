@@ -60,10 +60,10 @@ const checkPasswords = (password) => {
       
       if (length) {
         rating++;
-        lengthButton.style.display = 'none'
+        lengthButton.style.display = 'none';
       } else {
         rating--;
-        lengthButton.style.display = 'block'
+        lengthButton.style.display = 'block';
       }
     }
 

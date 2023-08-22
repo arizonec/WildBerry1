@@ -11,10 +11,11 @@ const createElement = () => {
     const newElem = document.createElement('div');
     newElem.innerHTML = '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDBnEfSB22oquOa32D_q1eHqxE2usiHWdFfNn6FaOY2_wOnIfiyZjV2WmQ4DTS0cKxkT4&usqp=CAU"></img>';
     newElem.style.cssText = `
-        margin-left: 60%;
+        margin-left: 20%;
         transform: translateX(-50%);
-        width: 500px;
-        height: 100px;
+        width: 227px;
+        height: 222px;
+        box-shadow: 1px 1px 40px pink;
     `;
     root.append(newElem);
 }

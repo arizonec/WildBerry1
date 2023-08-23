@@ -1,17 +1,17 @@
 
-function parse(str) {
-    let i = 0;
+const parse = (str) => {
+    let i = 0; //Создаем индекс, который будет увеличиться при прозоде по каждому символу строки.
 
-    function parseObject() { 
+    const parseObject = () => {
         if(str[i] !== '{'){
-            throw new Error('Строка не является корректным JSON объектом');
-
+            throw new Error('Строка не является корректным JSON объектом'); 
+            //Сразу на входе необходимо проверить, является ли строка JSON объектом, если нет, то сразу прерываем работу.
         }
         i++;
-        const obj = {};
+        const obj = {}; //Если проверка выше дала разрешение идти дальше, то создаем объект.
     
-        while (i < str.length && str[i] !== '}') { 
-            const key = parseString(); 
+        while (i < str.length && str[i] !== '}') { //Далее проходим по элементам строки до тех пор, пока не кончится длина или не будет закрываящая кавычка.
+            const key = parseString(); //Так как у нас объект, то необходимо создать вид key:value.
 
             if (str[i] !== ':') {
                 throw new Error('Строка не является корректным JSON объектом');
@@ -19,7 +19,7 @@ function parse(str) {
     
             i++;
     
-            const value = parseValue();
+            const value = parseValue(); //В отличии от key в value может быть что угодно, поэтому требуется проверка на тип данных!
             obj[key] = value; 
     
           
@@ -33,10 +33,10 @@ function parse(str) {
         }
           
         i++;
-        return obj;
+        return obj; //В случае успешно пройденых проверок, возвращается объект!
       }
     
-    function parseValue() {
+    const parseValue = () => { //Проверяем следующий элемент после : на тип, и в зависимости от варианта вызываем нужный метод.
         if (str[i] === '{') { 
             return parseObject();
         }else if (str[i] === '[') { 
@@ -58,12 +58,13 @@ function parse(str) {
         } 
     }
   
-    function parseArray() { 
+    const parseArray = () => { 
         if (str[i] !== '[') {
             throw new Error('Строка не является корректным JSON массивом');
+            //Сразу на входе проверяем, является ли строка массивом, если нет, то выкидывает ошибку.
         }
         i++;
-        const arr = [];
+        const arr = []; //Если это все таки массив, то его необходимо заполнить!
   
         while (i < str.length) { 
             if (str[i] === ' ' || str[i] === ',') {
@@ -73,7 +74,7 @@ function parse(str) {
   
             if (str[i] === ']') {
                 i++;
-                return arr;
+                return arr; //Если есть закрывающая скобка, то возвращаем заполненный массив!
             }
   
             const value = parseValue(); 
@@ -86,16 +87,18 @@ function parse(str) {
         throw new Error('Строка не является корректным JSON массивом');
     }
   
-    function parseString() {
+    const parseString = () => {
         if (str[i] !== '"') {
             throw new Error('Строка не является корректной JSON строкой');
+            //Сразу на входе проверяем, является ли строка пустой, если да, то выкидывает ошибку.
         }  
 
 
         i++;  
-        let result = '';
+        let result = ''; //Создаем переменную состояния, в которую записываем строку.
         let escape = false;
-     
+        //Далее требуется проверить строку на наличие символов экранирования!
+
         while (i < str.length) {
             if (escape) { 
                 if (str[i] === '"' || str[i] === '\\' || str[i] === '/') {
@@ -131,7 +134,7 @@ function parse(str) {
         throw new Error('Ошибка строки, проверьте строку на правильность!');
     }
   
-    function parseNumber() {
+    const parseNumber = () => {//Проверяем является ли строка корректным числом, если да, то меняем тип данных и возвращаем число!
         let number = '';
         
         while (i < str.length && isDigit(str[i])) {
@@ -145,7 +148,7 @@ function parse(str) {
         return Number(number);
     }
       
-    function isDigit(char) {
+    const isDigit = (char) => {
         return /[0-9]/.test(char);
     }
 
